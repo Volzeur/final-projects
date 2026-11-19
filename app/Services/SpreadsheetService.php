@@ -31,7 +31,7 @@ class SpreadsheetService
 
         // Title row
         $sheet->mergeCells('A1:I1');
-        $sheet->setCellValue('A1', 'LendThread - Money Circulation Report');
+        $sheet->setCellValue('A1', 'Kamibantu - Money Circulation Report');
         $sheet->getStyle('A1')->applyFromArray([
             'font' => ['bold' => true, 'size' => 16],
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
@@ -137,7 +137,7 @@ class SpreadsheetService
         $writer = new Xlsx($spreadsheet);
 
         // Filename includes date range
-        $filename = 'lendthread-circulation';
+        $filename = 'Kamibantu-circulation';
         if ($from) $filename .= '-from-' . $from;
         if ($to) $filename .= '-to-' . $to;
         if (!$from && !$to) $filename .= '-' . now()->format('Y-m-d');

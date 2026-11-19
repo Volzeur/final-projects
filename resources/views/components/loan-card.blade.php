@@ -16,7 +16,13 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-sm font-semibold">{{ $post->user->name }}</span>
-                    <span class="text-xs text-muted-foreground">{{ $post->created_at->diffForHumans() }}</span>
+                    <span class="text-xs text-muted-foreground">
+                        @if($post->updated_at->gt($post->created_at->addSecond()))
+                            edited {{ $post->updated_at->diffForHumans() }}
+                        @else
+                            {{ $post->created_at->diffForHumans() }}
+                        @endif
+                    </span>
                 </div>
                 @if($post->status === 'closed')
                     <span class="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">

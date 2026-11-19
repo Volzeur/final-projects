@@ -1,13 +1,13 @@
 <x-layouts.guest title="Log in">
     <h1 class="text-xl font-semibold text-center mb-1">Welcome back</h1>
-    <p class="text-sm text-muted-foreground text-center mb-6">Log in to your LendThread account</p>
+    <p class="text-sm text-muted-foreground text-center mb-6">Log in to your Kamibantu account</p>
 
     <form method="POST" action="{{ route('login') }}" class="space-y-4">
         @csrf
 
         <div>
             <label for="email" class="block text-sm font-medium mb-1.5">Email</label>
-            <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus
+            <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus autocomplete="off"
                    class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             @error('email')
                 <p class="mt-1 text-xs text-destructive">{{ $message }}</p>

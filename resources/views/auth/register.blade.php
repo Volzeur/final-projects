@@ -1,13 +1,13 @@
 <x-layouts.guest title="Sign up">
     <h1 class="text-xl font-semibold text-center mb-1">Create an account</h1>
-    <p class="text-sm text-muted-foreground text-center mb-6">Join LendThread to request or offer loans</p>
+    <p class="text-sm text-muted-foreground text-center mb-6">Join Kamibantu to request or offer loans</p>
 
     <form method="POST" action="{{ route('register') }}" class="space-y-4">
         @csrf
 
         <div>
             <label for="name" class="block text-sm font-medium mb-1.5">Full Name</label>
-            <input type="text" name="name" id="name" value="{{ old('name') }}" required autofocus
+            <input type="text" name="name" id="name" value="{{ old('name') }}" required autofocus autocomplete="off"
                    class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             @error('name')
                 <p class="mt-1 text-xs text-destructive">{{ $message }}</p>
@@ -16,7 +16,7 @@
 
         <div>
             <label for="email" class="block text-sm font-medium mb-1.5">Email</label>
-            <input type="email" name="email" id="email" value="{{ old('email') }}" required
+            <input type="email" name="email" id="email" value="{{ old('email') }}" required autocomplete="off"
                    class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             @error('email')
                 <p class="mt-1 text-xs text-destructive">{{ $message }}</p>

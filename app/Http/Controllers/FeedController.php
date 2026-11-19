@@ -9,7 +9,7 @@ class FeedController extends Controller
 {
     public function index(Request $request)
     {
-        $query = LoanPost::with('user')->open()->latest();
+        $query = LoanPost::with('user')->open()->latest('updated_at');
 
         // Optional search
         if ($search = $request->get('q')) {

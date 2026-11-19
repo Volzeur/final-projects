@@ -34,6 +34,6 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('feed')->with('success', 'Welcome to LendThread!');
+        return redirect()->route('feed')->with('success', 'Welcome to Kamibantu!');
     }
 }
