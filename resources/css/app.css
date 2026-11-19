@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/*
+ * shadcn-inspired neutral design tokens
+ * Using zinc palette as the neutral base
+ */
+@theme {
+    --color-background: #ffffff;
+    --color-foreground: #09090b;
+    --color-card: #ffffff;
+    --color-card-foreground: #09090b;
+    --color-muted: #f4f4f5;
+    --color-muted-foreground: #71717a;
+    --color-border: #e4e4e7;
+    --color-input: #e4e4e7;
+    --color-ring: #a1a1aa;
+    --color-primary: #18181b;
+    --color-primary-foreground: #fafafa;
+    --color-secondary: #f4f4f5;
+    --color-secondary-foreground: #18181b;
+    --color-accent: #f4f4f5;
+    --color-accent-foreground: #18181b;
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #fafafa;
+    --color-success: #0f766e;
+    --color-success-foreground: #fafafa;
+    --color-whatsapp: #0f766e;
+    --color-whatsapp-foreground: #ffffff;
+}
+
+/* Trix editor styling to match our theme */
+trix-editor {
+    @apply border border-border rounded-lg p-3 min-h-[150px] bg-background text-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+trix-toolbar {
+    @apply border border-border border-b-0 rounded-t-lg bg-muted p-2;
+}
+
+trix-toolbar .trix-button-group {
+    @apply border-border;
+}
+
+trix-editor {
+    @apply rounded-t-none;
+}
+
+/* DataTables override to match neutral theme */
+.dataTables_wrapper .dataTables_filter input {
+    @apply border border-border rounded-lg px-3 py-1.5 text-sm;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    @apply border border-border rounded-lg px-2 py-1 text-sm;
+}
+
+table.dataTable thead th {
+    @apply border-b border-border text-muted-foreground font-medium text-xs uppercase tracking-wider;
+}
+
+table.dataTable tbody td {
+    @apply border-b border-border text-sm;
+}
+
+table.dataTable tbody tr:hover {
+    @apply bg-muted/50;
+}

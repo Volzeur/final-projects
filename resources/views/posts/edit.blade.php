@@ -1,0 +1,76 @@
+<x-layouts.app title="Edit Loan Request">
+    <div class="mb-6">
+        <a href="{{ route('posts.show', $post) }}" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+            Back to post
+        </a>
+    </div>
+
+    <div class="rounded-xl border border-border bg-card p-6">
+        <h1 class="text-xl font-semibold mb-1">Edit Loan Request</h1>
+        <p class="text-sm text-muted-foreground mb-6">Update your loan request details.</p>
+
+        <form method="POST" action="{{ route('posts.update', $post) }}" class="space-y-5">
+            @csrf
+            @method('PUT')
+
+            <div>
+                <label for="title" class="block text-sm font-medium mb-1.5">Title</label>
+                <input type="text" name="title" id="title" value="{{ old('title', $post->title) }}" required
+                       class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                @error('title')
+                    <p class="mt-1 text-xs text-destructive">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1.5">Description</label>
+                <x-wysiwyg name="description" :value="old('description', $post->description)" />
+                @error('description')
+                    <p class="mt-1 text-xs text-destructive">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="amount_needed" class="block text-sm font-medium mb-1.5">Amount Needed (Rp)</label>
+                    <input type="number" name="amount_needed" id="amount_needed"
+                           value="{{ old('amount_needed', $post->amount_needed) }}"
+                           min="10000" step="1000" required
+                           class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    @error('amount_needed')
+                        <p class="mt-1 text-xs text-destructive">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div>
+                    <label for="interest_rate" class="block text-sm font-medium mb-1.5">Interest Rate (%)</label>
+                    <input type="number" name="interest_rate" id="interest_rate"
+                           value="{{ old('interest_rate', $post->interest_rate) }}"
+                           min="0" max="100" step="0.5" required
+                           class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    @error('interest_rate')
+                        <p class="mt-1 text-xs text-destructive">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div>
+                <label for="collateral_description" class="block text-sm font-medium mb-1.5">Collateral</label>
+                <input type="text" name="collateral_description" id="collateral_description"
+                       value="{{ old('collateral_description', $post->collateral_description) }}" required
+                       class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                @error('collateral_description')
+                    <p class="mt-1 text-xs text-destructive">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+                <button type="submit"
+                        class="rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                    Update Request
+                </button>
+                <a href="{{ route('posts.show', $post) }}" class="rounded-lg px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Cancel</a>
+            </div>
+        </form>
+    </div>
+</x-layouts.app>
