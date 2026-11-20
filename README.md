@@ -23,7 +23,9 @@ php artisan migrate:fresh --seed
 git clone https://github.com/Volzeur/final-projects.git
 ```
 
-Masuk ke folder "final-projects" terus Ctrl+A dan Ctrl+X semua file disitu terus pindahin ke template laravel kalian
+Masuk ke folder "final-projects" terus Ctrl+A dan Ctrl+X semua file disitu terus pindahin ke template laravel kalian.
+
+kalo udah tinggal run
 
 ```bash
 # jalanin
